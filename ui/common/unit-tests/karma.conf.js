@@ -14,7 +14,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '**/unit-tests/*Spec.js'
+      '**/unit-tests/*.spec.js'
     ],
 
 
@@ -25,7 +25,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      '**/unit-tests/*Spec.js': [ 'browserify' ]
+      '**/unit-tests/*.spec.js': [ 'browserify' ]
     },
 
     browserify: {
@@ -36,7 +36,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'junit'],
+    reporters: ['mocha', 'junit'],
 
     junitReporter: {
       outputDir: '../test-results/js/results'
@@ -57,7 +57,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: process.env.KARMA_SINGLE_RUN || false,
+    autoWatch: true,
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher

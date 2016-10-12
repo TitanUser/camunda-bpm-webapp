@@ -10,7 +10,7 @@ require('angular-mocks');
 var module = angular.mock.module;
 var inject = angular.mock.inject;
 
-describe('cockpit.plugin.drd.common promisify service', function() {
+describe('cam-common promisify service', function() {
   var promisify;
   var $rootScope;
 
@@ -83,7 +83,16 @@ describe('cockpit.plugin.drd.common promisify service', function() {
       $rootScope.$digest();
     });
 
-    it('should pormisify only choosen methods', function(done) {
+    it('should not promisify methods from prototype when onlyOwnProperties is true', function() {
+      var obj = Object.create({
+        targetFn: targetFn
+      });
+      var promisifiedObj = promisify.promisifyObject(obj, null, true);
+
+      expect(promisifiedObj.targetFn).to.equal(targetFn);
+    });
+
+    it('should promisify only chosen methods', function(done) {
       var obj = promisify.promisifyObject({
         targetFn: targetFn,
         fn2: function() {
@@ -100,6 +109,25 @@ describe('cockpit.plugin.drd.common promisify service', function() {
         });
 
       expect(obj.fn2()).to.eql(2);
+
+      $rootScope.$digest();
+    });
+
+    it('should run original method with correct this context', function(done) {
+      var obj = {
+        method: function(cb) {
+          cb(null, this);
+        }
+      };
+      var promisifiedObj = promisify.promisifyObject(obj);
+
+      promisifiedObj
+        .method()
+        .then(function(usedThis) {
+          expect(usedThis).to.eql(obj);
+
+          done();
+        });
 
       $rootScope.$digest();
     });

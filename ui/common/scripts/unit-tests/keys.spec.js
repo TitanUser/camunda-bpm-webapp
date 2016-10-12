@@ -2,7 +2,7 @@
 
 var chai = require('chai');
 var expect = chai.expect;
-var getKeys = require('../util/getKeys');
+var getKeys = require('../util/get-keys');
 
 describe('common/utils getKeys', function() {
   var obj;

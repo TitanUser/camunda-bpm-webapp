@@ -1,8 +1,8 @@
 'use strict';
 
 var angular = require('camunda-commons-ui/vendor/angular');
-var includes = require('../../../../../../common/scripts/util/includes');
-var getKeys = require('../../../../../../common/scripts/util/getKeys');
+var includes = require('../../util/includes');
+var getKeys = require('../../util/get-keys');
 
 module.exports = [
   '$q',
@@ -16,18 +16,18 @@ module.exports = [
       methods = angular.isArray(methods) ? methods : getKeys(obj, !onlyOwnProperties);
       methods = filterMethods(obj, methods);
 
+      var newObj = Object.create(obj);
+
       return getKeys(obj, !onlyOwnProperties)
         .reduce(function(newObj, key) {
           var value = obj[key];
 
           if (includes(methods, key)) {
             newObj[key] = promisifyFunction(value, obj);
-          } else {
-            newObj[key] = value;
           }
 
           return newObj;
-        }, {});
+        }, newObj);
     }
 
     function filterMethods(obj, methods) {
