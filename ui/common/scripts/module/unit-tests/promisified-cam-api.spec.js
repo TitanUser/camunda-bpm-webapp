@@ -5,6 +5,7 @@ var sinon = require('sinon');
 var expect = chai.expect;
 var angular = require('camunda-commons-ui/vendor/angular');
 var drdCommon = require('../index');
+var createCamApiMock = require('../../../unit-tests/create-cam-api-mock');
 require('angular-mocks');
 
 var module = angular.mock.module;
@@ -17,18 +18,11 @@ describe('cam-common promisifiedCamApi service', function() {
   var promisifiedCamAPI;
 
   beforeEach(module(function($provide) {
-    fakeResource = {
-      get: sinon.stub()
-    };
+    camAPI = createCamApiMock();
+    fakeResource = camAPI.fakeResource;
 
     fakeResource.get.onCall(0).callsArgWith(0, null, 12);
     fakeResource.get.onCall(1).callsArgWith(0, 'error');
-
-    camAPI = {
-      resource: sinon.stub()
-    };
-
-    camAPI.resource.returns(fakeResource);
 
     $provide.value('camAPI', camAPI);
   }));

@@ -12,5 +12,10 @@
       <a href="#/decisions" ng-if="count.instances == 1">Decision evaluation</a>
       <span class="value">{{ (count.instances | abbreviateNumber) || 0 }}</span>
     </li>
+    <li>
+      <a href="#/decisions" ng-if="count.drds == 0 || count.drds > 1">Decision requirements definitions</a>
+      <a href="#/decisions" ng-if="count.drd == 1">Decision requirements definition</a>
+      <span class="value">{{ (count.drds | abbreviateNumber) || 0 }}</span>
+    </li>
   </ul>
 </div>
