@@ -38,7 +38,7 @@ public class Welcome {
 
   /**
    * A setter to set the {@link WelcomeRuntimeDelegate}.
-   * @param cockpitRuntimeDelegate
+   * @param welcomeRuntimeDelegate
    */
   public static void setRuntimeDelegate(WelcomeRuntimeDelegate welcomeRuntimeDelegate) {
     WELCOME_RUNTIME_DELEGATE = welcomeRuntimeDelegate;

@@ -1,9 +1,9 @@
 window.camTasklistConf = {
   // change the app name and vendor
-  // app: {
-  //   name: 'Todos',
-  //   vendor: 'Company'
-  // },
+  'app': {
+    'name': ' - Единое окно',
+    'vendor': 'Innovative People'
+  },
   //
   // configure the date format
   // "dateFormat": {
@@ -11,10 +11,10 @@ window.camTasklistConf = {
   //   "long":   "LLLL"
   // },
   //
-  // "locales": {
-  //    "availableLocales": ["en", "de"],
-  //    "fallbackLocale": "en"
-  //  },
+  'locales': {
+    'availableLocales': ['ru', 'en'],
+    'fallbackLocale': 'en'
+  },
   //
   // // custom libraries and scripts loading and initialization,
   // // see: http://docs.camunda.org/guides/user-guide/#tasklist-customizing-custom-scripts
@@ -34,23 +34,23 @@ window.camTasklistConf = {
   'shortcuts': {
     'claimTask': {
       'key': 'ctrl+alt+c',
-      'description': 'claims the currently selected task'
+      'description': 'назначить выбранную задачу'
     },
     'focusFilter': {
       'key': 'ctrl+shift+f',
-      'description': 'set the focus to the first filter in the list'
+      'description': 'выбрать первый фильтр в списке'
     },
     'focusList': {
       'key': 'ctrl+alt+l',
-      'description': 'sets the focus to the first task in the list'
+      'description': 'выбрать первую задачу в списке'
     },
     'focusForm': {
       'key': 'ctrl+alt+f',
-      'description': 'sets the focus to the first input field in a task form'
+      'description': 'выбрать первый элемент в форме для ввода данных'
     },
     'startProcess': {
       'key': 'ctrl+alt+p',
-      'description': 'opens the start process modal dialog'
+      'description': 'открыть диалог для старта процессов'
     }
   }
 };

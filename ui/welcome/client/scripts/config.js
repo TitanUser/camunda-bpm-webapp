@@ -1,8 +1,8 @@
 window.camWelcomeConf = {
-  // app: {
-  //   name: 'Todos',
-  //   vendor: 'Company'
-  // },
+  'app': {
+    'name': ' - Единое окно',
+    'vendor': 'Innovative People'
+  },
   //
   // configure the date format
   // "dateFormat": {
@@ -10,25 +10,20 @@ window.camWelcomeConf = {
   //   "long":   "LLLL"
   // },
   //
-  // "locales": {
-  //    "availableLocales": ["en", "de"],
-  //    "fallbackLocale": "en"
-  //  },
-  // links: [
-  //   {
-  //     label: 'Angular.js Docs',
-  //     href: 'https://code.angularjs.org/1.2.16/docs',
-  //     description: 'Almost interesting'
-  //   },
-  //   {
-  //     label: 'XKCD',
-  //     href: 'https://xkcd.org',
-  //     description: 'Nerdy comic'
-  //   },
-  //   {
-  //     label: 'Slashdot',
-  //     href: 'https://slashdot.org',
-  //     description: 'News for nerds, stuff that matter'
-  //   }
-  // ]
+  'locales': {
+    'availableLocales': ['en', 'ru'],
+    'fallbackLocale': 'ru'
+  },
+  links: [
+    {
+      label: 'Innovative Poeple',
+      href: 'http://inpglobal.com',
+      description: 'Оффициальный сайт партнера Camunda BPM'
+    },
+    {
+      label: 'Документация',
+      href: 'https://docs.camunda.org/manual/7.5/modeler/camunda-modeler/',
+      description: 'Документация по продукту "Camunda Modeler" (англ.)'
+    }
+  ]
 };

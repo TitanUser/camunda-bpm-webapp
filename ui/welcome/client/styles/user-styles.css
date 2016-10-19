@@ -1,10 +1,12 @@
-/*
 .navbar-brand {
   text-indent: -999em;
-  background-image: url(./path/to/the/logo.png);
-  width: 80px;
+  background-image: url(/camunda/app/tasklist/assets/images/inpglobal-logo.png);
+  width: 166px;
+  margin-left: 10px;
+  background-repeat: no-repeat;
 }
 
+/*
 [cam-widget-header] {
   border-bottom-color: blue;
 }

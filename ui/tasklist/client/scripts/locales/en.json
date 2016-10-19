@@ -1,9 +1,5 @@
 {
-  "VARIABLE_VALUE":
-                  "Value",
-
-
-
+  "VARIABLE_VALUE": "Value",
   "dateLocales": {
     "months": [
       "January",
@@ -95,22 +91,10 @@
       "doy": 4
     }
   },
-
-  "CREATE_TASK" :
-        "Create task",
-
-  "NEW_TASK_NAME" :
-        "Name",
-
-  "NEW_TASK_ASSIGNEE" :
-        "Assignee",
-
-  "NEW_TASK_TENANT_ID" :
-        "Tenant ID",
-
-  "NEW_TASK_DESCRIPTION" :
-        "Description",
-
-   "TASK_SAVE_ERROR":
-        "Something went wrong while saving the task"
+  "CREATE_TASK": "Create task",
+  "NEW_TASK_NAME": "Name",
+  "NEW_TASK_ASSIGNEE": "Assignee",
+  "NEW_TASK_TENANT_ID": "Tenant ID",
+  "NEW_TASK_DESCRIPTION": "Description",
+  "TASK_SAVE_ERROR": "Something went wrong while saving the task"
 }

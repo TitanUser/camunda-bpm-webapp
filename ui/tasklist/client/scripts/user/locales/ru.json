@@ -1,0 +1,15 @@
+{
+  "LOGGED_IN": "Вы не вошли в систему.",
+  "CREDENTIALS_ERROR": "Невозможно войти с текущими реквизитами.",
+  "USERNAME": "Пользователь",
+  "PASSWORD": "Пароль",
+  "PLEASE_SIGN_IN": "Пожалуйста войдите в систему",
+  "LOGIN": "Логин",
+  "SIGN_IN_ACTION": "Войти в систему",
+  "SIGN_OUT_ACTION": "Выйти",
+  "MY_PROFILE": "Профиль",
+  "LOGGED_OUT": "Вы вышли из системы.",
+  "USER_NAME": "Имя пользователя",
+  "SESSION_EXPIRED": "Ваша сессия истекла",
+  "SESSION_EXPIRED_MESSAGE": "Вам необходимо войти в систему заново."
+}

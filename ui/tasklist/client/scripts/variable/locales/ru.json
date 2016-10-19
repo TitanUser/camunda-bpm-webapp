@@ -1,0 +1,15 @@
+{
+  "EMPTY_VALUE": "&lt;Пусто&gt;",
+  "TASK_VARIABLES": "Переменные",
+  "VARIABLE_OBJECT_TYPE_NAME": "Имя типа объекта",
+  "VARIABLE_VALUE_INFO": "Информация о значении",
+  "VARIABLE_SERIALIZATION_DATA_FORMAT": "Формат данных для сериализации",
+  "DOWNLOAD": "Загрузить",
+  "LESS_VARIABLES": "Показать меньше переменных",
+  "MORE_VARIABLES": "Показать больше перменных",
+  "UNDEFINED_VARIABLE": "&lt;Неопределено&gt;",
+  "TOGGLE": "Переключить",
+  "SERIALIZED": "Сериализовано",
+  "DESERIALIZED": "Десериализовано",
+  "DESERIALIZATION_ERROR": "Ошибка десериализации"
+}
