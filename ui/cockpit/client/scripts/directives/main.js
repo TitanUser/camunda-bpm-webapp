@@ -14,14 +14,19 @@ var angular = require('camunda-commons-ui/vendor/angular'),
     variable = require('./variable'),
     focus = require('./focus'),
     viewPills = require('./viewPills'),
+    sparkline = require('./sparkline'),
+    pieChart = require('./pie-chart'),
     selectActivity = require('./selectActivity'),
     selectActivityInstance = require('./selectActivityInstance'),
     processVariable = require('./processVariable'),
     dynamicName = require('./dynamicName'),
     quickFilter = require('./quickFilter'),
-    diagramStatisticsLoader = require('./diagramStatisticsLoader');
+    diagramStatisticsLoader = require('./diagramStatisticsLoader'),
+    camCommon = require('../../../../common/scripts/module');
 
-var directivesModule = angular.module('cam.cockpit.directives', []);
+var directivesModule = angular.module('cam.cockpit.directives', [
+  camCommon.name
+]);
 
 directivesModule.directive('camBreadcrumbsPanel', breadcrumbs);
 directivesModule.directive('numeric', numeric);
@@ -36,6 +41,8 @@ directivesModule.directive('variable', variable);
 directivesModule.directive('focus', focus);
 directivesModule.directive('viewPills', viewPills);
 directivesModule.directive('camSelectActivity', selectActivity);
+directivesModule.directive('camSparkline', sparkline);
+directivesModule.directive('camPieChart', pieChart);
 directivesModule.directive('camSelectActivityInstance', selectActivityInstance);
 directivesModule.directive('processVariable', processVariable);
 directivesModule.directive('camDynamicName', dynamicName);

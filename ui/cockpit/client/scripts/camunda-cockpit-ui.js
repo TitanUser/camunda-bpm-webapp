@@ -5,6 +5,11 @@ var $ = window.jQuery = window.$ = require('jquery');
 var commons = require('camunda-commons-ui/lib');
 var sdk = require('camunda-commons-ui/vendor/camunda-bpm-sdk-angular');
 var dataDepend = require('angular-data-depend');
+var camCommon = require('../../../common/scripts/module');
+var moment = require('camunda-commons-ui/vendor/moment');
+var events = require('events');
+
+require('../../../common/scripts/module');
 
 var APP_NAME = 'cam.cockpit';
 
@@ -60,7 +65,7 @@ module.exports = function(pluginDependencies) {
       UriProvider.replace(':engine', [ '$window', function($window) {
         var uri = $window.location.href;
 
-        var match = uri.match(/\/app\/cockpit\/(\w+)(|\/)/);
+        var match = uri.match(/\/app\/cockpit\/([\w-]+)(|\/)/);
         if (match) {
           return match[1];
         } else {
@@ -106,8 +111,9 @@ module.exports.exposePackages = function(container) {
   container['camunda-commons-ui'] = commons;
   container['camunda-bpm-sdk-js'] = sdk;
   container['angular-data-depend'] = dataDepend;
-  container['moment'] = require('camunda-commons-ui/vendor/moment');
-  container['events'] = require('events');
+  container['moment'] = moment;
+  container['events'] = events;
+  container['cam-common'] = camCommon;
 };
 
 
