@@ -1,6 +1,27 @@
 <div class="columns"
      ng-controller="camLayoutCtrl">
 
+  <!-- # processes row -->
+  <section class="row row-top processes-list"
+           ng-controller="camProcessesListCtrl">
+    <header class="cell top">
+      <!--<button ng-click="toggleRegion($event)"-->
+              <!--data-region="processesList"-->
+              <!--class="region-toggle btn btn-link">-->
+        <!--<span class="glyphicon"></span>-->
+      <!--</button>-->
+    </header>
+
+    <div class="cell content">
+      <!--<view ng-repeat="processlistPlugin in processlistPlugins"-->
+            <!--provider="processlistPlugin"-->
+            <!--vars="processesListVars"></view>-->
+
+      <div processlist-data="processesListData"></div>
+    </div>
+  </section>
+  <!-- / processes row -->
+
   <!-- # filters column -->
   <section class="column column-left task-filters"
            ng-controller="camFiltersCtrl">
@@ -27,10 +48,6 @@
   </section>
   <!-- / filters column -->
 
-
-
-
-
   <!-- # list column -->
   <section class="column column-center tasks-list"
            ng-controller="camListCtrl">
@@ -56,10 +73,6 @@
     </div>
   </section>
   <!-- / list column -->
-
-
-
-
 
   <!-- # task column -->
   <section class="column column-right task-details"

@@ -9,10 +9,10 @@
 
   <bean id="processEngineConfiguration" class="org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
 
-    <property name="jdbcUrl" value="${database.url}" />
-    <property name="jdbcDriver" value="${database.driver}" />
-    <property name="jdbcUsername" value="${database.username}" />
-    <property name="jdbcPassword" value="${database.password}" />
+    <property name="jdbcUrl" value="jdbc:postgresql://127.0.0.1:5439/webappTest" />
+    <property name="jdbcDriver" value="org.postgresql.Driver" />
+    <property name="jdbcUsername" value="webapp" />
+    <property name="jdbcPassword" value="webapp" />
 
     <!-- Database configurations -->
     <property name="databaseSchemaUpdate" value="true" />
@@ -27,7 +27,7 @@
 
     <!-- mail server configurations -->
     <property name="mailServerPort" value="5025" />
-    <property name="history" value="${history.level}" />
+    <property name="history" value="full" />
 
     <property name="authorizationCheckRevokes" value="${authorizationCheckRevokes}"/>
 

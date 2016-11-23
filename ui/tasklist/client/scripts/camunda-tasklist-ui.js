@@ -56,6 +56,7 @@ module.exports = function(pluginDependencies) {
     require('./tasklist/index').name,
     require('./task/index').name,
     require('./process/index').name,
+    require('./processlist/index').name,
     require('./navigation/index').name,
     require('./form/index').name,
     require('./filter/index').name,
