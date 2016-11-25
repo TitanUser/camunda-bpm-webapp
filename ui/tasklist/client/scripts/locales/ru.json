@@ -93,8 +93,8 @@
   },
   "CREATE_TASK": "Создать задачу",
   "NEW_TASK_NAME": "Имя",
-  "NEW_TASK_ASSIGNEE": "Исполнитель",
-  "NEW_TASK_TENANT_ID": "Id новой задачи подсистемы",
+  "NEW_TASK_ASSIGNEE": "Назначение",
+  "NEW_TASK_TENANT_ID": "ID подсистемы",
   "NEW_TASK_DESCRIPTION": "Описание",
-  "TASK_SAVE_ERROR": "Что-то пошло не так при сохранении задачи"
+  "TASK_SAVE_ERROR": "Ошибка при сохранении задачи"
 }

@@ -15,6 +15,6 @@
   "LOAD_VARIABLES": "Загрузить переменные",
   "LOAD_VARIABLES_FAILURE": "Невозможно загрузить переменные",
   "BUSINESS_KEY": "Бизнес ключ",
-  "NO_TASK_VARIABLES": "Задача не содержит каких-либо переменных",
+  "NO_TASK_VARIABLES": "В задаче отсутствуют переменные",
   "REQUIRE_UNIQUE_NAME": "Имя должно быть уникальным"
 }
