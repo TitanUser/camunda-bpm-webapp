@@ -25,6 +25,10 @@ var DirectiveController = ['$scope', '$compile', 'Views', function( $scope,   $c
 
   $scope.control = {};
 
+  $scope.$on('resize', function() {
+    $scope.control.refreshZoom();
+  });
+
   /**
   * If the process diagram changes, then the diagram will be rendered.
   */

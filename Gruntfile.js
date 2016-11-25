@@ -143,12 +143,26 @@ module.exports = function(grunt) {
       thirdParty: {}
     },
 
-    protractor:       require('./grunt/config/protractor')(config)
+    protractor:       require('./grunt/config/protractor')(config),
+
+    karma: {
+      unit: {
+        configFile: './ui/common/unit-tests/karma.conf.js',
+        singleRun: process.env.KARMA_SINGLE_RUN || false,
+        client: {
+          mocha: {
+            timeout: 10000
+          }
+        }
+      }
+    }
   });
 
   require('camunda-commons-ui/grunt/tasks/localescompile')(grunt);
   require('camunda-commons-ui/grunt/tasks/persistify')(grunt);
   require('camunda-commons-ui/grunt/tasks/ensureLibs')(grunt);
+
+  grunt.loadNpmTasks('grunt-karma');
 
 grunt.registerTask('build', function(mode, app) {
 
@@ -214,6 +228,18 @@ grunt.registerTask('build', function(mode, app) {
   });
 
   grunt.registerTask('ensureSelenium', function() {
+
+    // set correct webdriver version
+    require('fs').writeFileSync('node_modules/grunt-protractor-runner/node_modules/protractor/config.json',
+'    {\n'+
+'      "webdriverVersions": {\n' +
+'        "selenium": "2.47.1",\n' +
+'        "chromedriver": "2.24",\n' +
+'        "iedriver": "2.47.0"\n' +
+'      }\n' +
+'    }'
+    );
+
     // async task
     var done = this.async();
 

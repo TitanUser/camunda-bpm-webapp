@@ -32,7 +32,22 @@
       <span class="glyphicon glyphicon-pause white"></span>
     </span>
 
-    <span ng-if="!!crumb.choices && crumb.choices.length > 1"
+    <span ng-if="!!crumb.choices && crumb.choices.length === 1">
+      <span class="divider">:</span>
+      {{ getActiveChoice(crumb.choices) }}
+    </span>
+
+    <span ng-if="!!crumb.choices && crumb.choices.length === 2"
+          class="switcher"
+          ng-init="choices = sortedChoices(crumb.choices)">
+      <span class="divider">:</span>
+
+      <span class="current">{{ choices[0].label }}</span>
+      <span class="divider">|</span>
+      <a href ng-click="selectChoice($event, choices[1])">{{ choices[1].label }}</a>
+    </span>
+
+    <span ng-if="!!crumb.choices && crumb.choices.length > 2"
           class="dropdown">
       <span class="divider">:</span>
 

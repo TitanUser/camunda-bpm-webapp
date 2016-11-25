@@ -7,7 +7,8 @@ var pagesModule = require('./pages/main'),
     resourcesModule = require('./resources/main'),
     camCommonsUi = require('camunda-commons-ui/lib'),
     sdk = require('camunda-commons-ui/vendor/camunda-bpm-sdk-angular'),
-    angular = require('camunda-commons-ui/vendor/angular');
+    angular = require('camunda-commons-ui/vendor/angular'),
+    camCommon = require('../../../common/scripts/module');
 
 
 var APP_NAME = 'cam.admin';
@@ -40,6 +41,7 @@ module.exports = function(pluginDependencies) {
     ) {
       $routeProvider.otherwise({ redirectTo: '/' });
 
+
       function getUri(id) {
         var uri = $('base').attr(id);
         if (!id) {
@@ -59,7 +61,7 @@ module.exports = function(pluginDependencies) {
       UriProvider.replace(':engine', [ '$window', function($window) {
         var uri = $window.location.href;
 
-        var match = uri.match(/\/app\/admin\/(\w+)(|\/)/);
+        var match = uri.match(/\/app\/admin\/([\w-]+)(|\/)/);
         if (match) {
           return match[1];
         } else {
@@ -80,7 +82,6 @@ module.exports = function(pluginDependencies) {
       camAPI
     ) {
       var userService = camAPI.resource('user');
-
       function getUserProfile(auth) {
         if (!auth || !auth.name) {
           $scope.userFullName = null;
@@ -143,4 +144,5 @@ module.exports.exposePackages = function(requirePackages) {
   requirePackages.jquery = $;
   requirePackages['camunda-commons-ui'] = camCommonsUi;
   requirePackages['camunda-bpm-sdk-js'] = sdk;
+  requirePackages['cam-common'] = camCommon;
 };

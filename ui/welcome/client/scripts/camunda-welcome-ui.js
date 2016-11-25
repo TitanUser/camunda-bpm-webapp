@@ -57,7 +57,7 @@ module.exports = function(pluginDependencies) {
       UriProvider.replace(':engine', [ '$window', function($window) {
         var uri = $window.location.href;
 
-        var match = uri.match(/\/app\/welcome\/(\w+)(|\/)/);
+        var match = uri.match(/\/app\/welcome\/([\w-]+)(|\/)/);
         if (match) {
           return match[1];
         } else {
@@ -85,6 +85,7 @@ module.exports.exposePackages = function(container) {
   container.jquery = $;
   container['camunda-commons-ui'] = commons;
   container['camunda-bpm-sdk-js'] = sdk;
+  container['cam-common'] = require('../../../common/scripts/module');
 };
 
 

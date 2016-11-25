@@ -4,8 +4,7 @@ var $ = require('jquery');
 
 require('jquery-ui/draggable');
 
-module.exports = function() {
-
+module.exports = ['localConf', '$rootScope', function(localConf, $rootScope) {
   return {
     restrict: 'CA',
     link: function(scope, element, attrs) {
@@ -32,7 +31,7 @@ module.exports = function() {
         }
       }
 
-      var originalCollapsabled = localStorage ? localStorage.getItem('ctnCollapsableParent:collapsed:'+ containerId) : 'no';
+      var originalCollapsabled = localConf.get('ctnCollapsableParent:collapsed:'+ containerId, 'no');
 
         // the main element that compensates the collapsing
       var compensateElement = collapsableElement[direction === 'left' || direction === 'top' ? 'next' : 'prev']();
@@ -47,13 +46,13 @@ module.exports = function() {
           compensateElement
             .children('.show-collapsable')
               .addClass('expand-collapse')
-              .append('<i class="glyphicon glyphicon-chevron-' + (vertical ? 'right' : 'down') + '"></i>');
+              .append('<i class="glyphicon glyphicon-menu-' + (vertical ? 'right' : 'down') + '"></i>');
 
       var hideHandle =
           collapsableElement
             .children('.hide-collapsable')
               .addClass('expand-collapse')
-              .append('<i class="glyphicon glyphicon-chevron-' + (vertical ? 'left' : 'up') + '"></i>');
+              .append('<i class="glyphicon glyphicon-menu-' + (vertical ? 'left' : 'up') + '"></i>');
 
         /**
          * Toggle show / hide handles
@@ -67,10 +66,7 @@ module.exports = function() {
           hideHandle.css('display', 'block');
         }
 
-        if (localStorage) {
-            // we need to store something else than a boolean because if it was never "initialized"
-          localStorage.setItem('ctnCollapsableParent:collapsed:'+ containerId, collapsed ? 'yes' : 'no');
-        }
+        localConf.set('ctnCollapsableParent:collapsed:'+ containerId, collapsed ? 'yes' : 'no');
       }
 
       function initResize() {
@@ -104,10 +100,7 @@ module.exports = function() {
 
         var originalCollapsableSize = collapsableElement[changeAttr]();
 
-        if (localStorage) {
-          var storedPos = localStorage.getItem('ctnCollapsableParent:size:'+ containerId);
-          originalCollapsableSize = (storedPos !== null ? storedPos : originalCollapsableSize);
-        }
+        localConf.get('ctnCollapsableParent:size:'+ containerId, originalCollapsableSize);
 
         originalCollapsableSize = Math.max(minWidth, originalCollapsableSize);
 
@@ -157,21 +150,26 @@ module.exports = function() {
               collapsableElement.css(changeAttr, pos);
               compensateElement.css(direction, pos);
 
-              if (localStorage) {
-                localStorage.setItem('ctnCollapsableParent:size:'+ containerId, pos);
-              }
+              localConf.set('ctnCollapsableParent:size:'+ containerId, pos);
             })
             .on('dragstop', function(event) {
               updateResizeHandlePosition();
 
-              scope.$broadcast('resize', [ event ]);
+              $rootScope.$broadcast('resize', [ event ]);
             });
 
         hideHandle.click(function() {
           setCollapsed(true);
 
           resizeHandle.animate(createOffset(0));
-          collapsableElement.animate(createSize(0));
+          collapsableElement
+            .animate(
+              createSize(0),
+              $rootScope.$broadcast.bind($rootScope, 'resize', {
+                direction: direction,
+                collapsed: true
+              })
+            );
           compensateElement.animate(createOffset(0));
         });
 
@@ -179,7 +177,14 @@ module.exports = function() {
           setCollapsed(false);
 
           resizeHandle.animate(createOffset(minWidth || originalCollapsableSize));
-          collapsableElement.animate(createSize(minWidth || originalCollapsableSize));
+          collapsableElement
+            .animate(
+              createSize(minWidth || originalCollapsableSize),
+              $rootScope.$broadcast.bind($rootScope, 'resize', {
+                direction: direction,
+                collapsed: false
+              })
+            );
           compensateElement.animate(createOffset(minWidth || originalCollapsableSize));
         });
 
@@ -196,4 +201,4 @@ module.exports = function() {
       initResize();
     }
   };
-};
+}];
